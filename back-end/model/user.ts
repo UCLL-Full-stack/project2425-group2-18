@@ -1,4 +1,4 @@
-import { Profile } from "./Profile";
+import { Profile } from "./profile";
 export class User{
     private id?: number;
     private username: string;
@@ -32,9 +32,15 @@ export class User{
         return this.password;
     }
 
-    // TODO: validation for password
+    // TODO: validation for password other than only length
     public setPassword(password: string): void{
-        this.password = password;
+        
+        if (password.length < 8){
+            throw new Error("Password must be at least 8 characters long");
+        }
+        else{
+            this.password = password;
+        }
     }
 
     public getProfile(): Profile{
