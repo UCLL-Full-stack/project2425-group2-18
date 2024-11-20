@@ -1,47 +1,53 @@
 import { Profile } from "./profile";
 export class User{
-    readonly id?: number
-    readonly username: string
-    readonly password: string
-    readonly profile?: Profile
+    private id?: number;
+    private username: string;
+    private password: string;
+    private profile: Profile;
 
-    constructor(user: {
-        id?: number
-        username: string
-        password: string
-        profile: Profile
-    }) {
-        this.validate(user)
-
-        this.id = user.id
-        this.username = user.username
-        this.password = user.password
-        this.profile = user.profile
+    constructor(username: string, password: string, profile: Profile){
+        this.username = username;
+        this.password = password;
+        this.profile = profile;
     }
 
-    validate(user: {
-        username: string
-        password: string
-        profile: Profile
-    }) {
-        if (!user.username?.trim()) {
-            throw new Error('Username is required')
+    public getId(): number | undefined{
+        return this.id;
+    }
+
+    public setId(id: number): void{
+        this.id = id;
+    }
+
+    public getUsername(): string{
+        return this.username;
+    }
+
+    // TODO: validation for username, username must be unique
+    public setUsername(username: string): void{
+        this.username = username;
+    }
+
+    public getPassword(): string{
+        return this.password;
+    }
+
+    // TODO: validation for password other than only length
+    public setPassword(password: string): void{
+        
+        if (password.length < 8){
+            throw new Error("Password must be at least 8 characters long");
         }
-        if (!user.password?.trim()) {
-            throw new Error('Password is required')
-        }
-        if (!user.profile) {
-            throw new Error('Role is required')
+        else{
+            this.password = password;
         }
     }
 
-    // checks if current user is equal to another user instance
-    equals({ id, username, password, profile }: { id?: number, username: string, email: string, password: string, profile: Profile }): boolean {
-    return (
-        this.id === id &&
-        this.username === username &&
-        this.password === password &&
-        JSON.stringify(this.profile) === JSON.stringify(profile)
-    );
+    public getProfile(): Profile{
+        return this.profile;
+    }
+
+    public setProfile(profile: Profile): void{
+        this.profile = profile;
     }
 }

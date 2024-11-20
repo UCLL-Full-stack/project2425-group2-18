@@ -40,11 +40,6 @@ export class Profile {
 
     // TODO: validation for email
     public setEmail(email: string): void {
-        const emailRegex = new RegExp("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
-        if (emailRegex.test(email)) {
-            this.email = email;
-        } else {
-            throw new Error("Invalid email address")
-        }
+        this.email = email;
     }
 }
