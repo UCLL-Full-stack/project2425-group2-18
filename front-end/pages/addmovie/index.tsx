@@ -1,21 +1,21 @@
 import Head from "next/head";
 import Header from "@/components/header";
-import UserLoginForm from "@/components/users/UserLoginForm";
+import AddMovieForm from "@/components/movies/AddMovieForm";
 
-const Login: React.FC = () => {
+const AddMovie: React.FC = () => {
     return (
         <>
             <Head>
-                <title>User Login</title>
+                <title>Add Movie</title>
             </Head>
             <Header />
             <main>
                 <section className="bg-custom-blue p-6 min-h-screen flex flex-col items-center">
-                    <UserLoginForm />
+                    <AddMovieForm/>
                 </section>
             </main>
         </>
     );
 };
 
-export default Login;
+export default AddMovie;
