@@ -72,7 +72,7 @@ const UserLoginForm: React.FC = () => {
 
     return (
         <>
-            <form style={{ height: '420px' }} className=" w-1/3 m-auto mt-4 flex flex-col items-center border border-black bg-loginform-green rounded-lg" onSubmit={handleSubmit}>
+            <form style={{ height: '420px' }} className=" w-1/3 m-auto mt-4 flex flex-col items-center border border-black bg-forms-grey rounded-lg" onSubmit={handleSubmit}>
                 <h1 className="font-semibold text-4xl mt-10 mb-8">Login</h1>
                 {statusMessages && (
                     <div className="row">
@@ -81,7 +81,7 @@ const UserLoginForm: React.FC = () => {
                                 <li
                                     key={index}
                                     className={classNames({
-                                        "text-red-800": type === "error",
+                                        "text-red-600": type === "error",
                                         "text-green-800": type === "success",
                                     })}
                                 >
@@ -103,9 +103,9 @@ const UserLoginForm: React.FC = () => {
                             type="text"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
-                            className="w-full p-2.5 bg-white rounded-lg"
+                            className="text-black w-full p-2.5 bg-white rounded-lg"
                         />
-                        {nameError && <div className="text-red-800 ">{nameError}</div>}
+                        {nameError && <div className="text-red-600 ">{nameError}</div>}
                     </div>
                 </div>
                 <div className="text-white mt-2 mb-2">
@@ -123,10 +123,10 @@ const UserLoginForm: React.FC = () => {
                             type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
-                            className="w-full p-2.5 bg-white rounded-lg"
+                            className="text-black w-full p-2.5 bg-white rounded-lg"
                         />
                         {passwordError && (
-                            <div className=" text-red-800">{passwordError}</div>
+                            <div className=" text-red-600">{passwordError}</div>
                         )}
                     </div>
                 </div>
