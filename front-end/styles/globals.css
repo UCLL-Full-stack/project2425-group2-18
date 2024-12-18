@@ -31,3 +31,25 @@ body {
     text-wrap: balance;
   }
 }
+
+.bg-custom-blue {
+  background-color: #222629;
+}
+
+.bg-green-button-home {
+  background-color: #86C232;
+}
+
+.bg-hover-button-home:hover {
+  background-color: #61892F;
+}
+
+.color-regular-text {
+  color: #6B6E70
+}
+
+.bg-loginform-green {
+  background-color: #6B6E70;
+  opacity: 0.7;
+}
+
