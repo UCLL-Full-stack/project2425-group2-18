@@ -42,4 +42,18 @@ export class Profile {
     public setEmail(email: string): void {
         this.email = email;
     }
+
+    equals(profile: Profile): boolean {
+        return (
+            this.firstName === profile.getFirstName() &&
+            this.lastName === profile.getLastName() &&
+            this.email === profile.getEmail()
+        );
+    }
+
+    static from({ id, firstName, lastName, email }: { id: number, firstName: string, lastName: string, email: string }): Profile {
+        const profileInstance = new Profile(firstName, lastName, email);
+        profileInstance.setId(id);
+        return profileInstance;
+    }
 }

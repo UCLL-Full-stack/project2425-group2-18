@@ -21,6 +21,7 @@ model User {
     password String
     profileId Int @unique
     profile Profile @relation(fields: [profileId], references: [id])
+    role String
 }
 
 model Movie {
