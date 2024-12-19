@@ -1,0 +1,49 @@
+{
+  "app.title": "ScreenRank",
+  "home": {
+    "welcome": "Welcome to ScreenRank",
+    "text": "Rate the movies you love with ScreenRank! Save every film you’ve watched, rate them, and curate your personal movie collection. Easily sort your favorites by genre and rating, and relive the magic of your top picks or avoid the ones that missed the mark. Start building your ultimate movie library today!",
+    "startbutton": "Let's get started!"
+  },
+  "header": {
+    "welcome": "Welcome",
+    "nav": {
+      "home": "Home",
+      "login": "Login",
+      "logout": "Logout",
+      "overview": "Overview"
+    }
+  },
+  "loginform": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "loginbutton": "Login",
+    "success": "Login successful. Redirecting to homepage...",
+    "error": {
+      "errorusername": "Wrong username!",
+      "errorpassword": "Wrong password!"
+    }
+  },
+  "movieoverview": {
+    "title": "Movie Overview",
+    "nomovies": "No movies yet!",
+    "moviecard": {
+      "director": "Director: ",
+      "releaseyear": "Release Year:"
+    }
+  },
+  "addmovie": {
+    "title": "Add Movie",
+    "moviename": "Movie Name",
+    "director": "Director",
+    "releaseyear":"Release Year",
+    "buttonaddmovie": "Add Movie",
+    "success": "Movie successfully add. Redirecting to overview...",
+    "error": {
+      "errormoviename": "Fill in the movie name!",
+      "errordirector": "Fill in the director!",
+      "errorreleaseyear": "Fill in the release year of the movie!"
+    }
+  }
+}

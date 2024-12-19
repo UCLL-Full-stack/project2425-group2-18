@@ -3,8 +3,13 @@ import Header from "@/components/header";
 import Link from "next/link";
 import MovieOverview from "@/components/movies/MovieOverview";
 import { Movie } from "@/components/movies/MovieOverview";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
 const Movie: React.FC = () => {
+
+    const {t} = useTranslation();
+
     const movies: Movie[] = [
         { id: 1, name: "Inception", director: "Christopher Nolan", releaseYear: 2010 },
         { id: 2, name: "The Matrix", director: "Lana Wachowski, Lilly Wachowski", releaseYear: 1999 },
@@ -16,11 +21,11 @@ const Movie: React.FC = () => {
     return (
         <>
             <Head>
-                <title>Movie Overview</title>
+                <title>{t('movieoverview.title')}</title>
             </Head>
             <Header />
             <main className="bg-custom-blue min-h-screen flex flex-col items-center">
-                <h1 className="text-white font-semibold text-center text-2xl">Movie Overview</h1>
+                <h1 className="text-white font-semibold text-center text-2xl">{t('movieoverview.title')}</h1>
                 <section>
                     <MovieOverview movies={movies}/>
                 </section>
@@ -38,6 +43,16 @@ const Movie: React.FC = () => {
             </main>
         </>
     );
+};
+
+export const getServerSideProps = async (context: { locale: any; }) => {
+    const {locale} = context;
+
+    return {
+        props: {
+            ...(await serverSideTranslations(locale ?? "en", ["common"])),
+        },
+    };
 };
 
 export default Movie;

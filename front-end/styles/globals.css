@@ -53,3 +53,10 @@ body {
   opacity: 0.7;
 }
 
+.bg-movie-card {
+  background-color: #474B4F;
+}
+
+.color-title-movie-card {
+  color: #86C232;
+}

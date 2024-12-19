@@ -26,12 +26,12 @@ const UserLoginForm: React.FC = () => {
         let result = true;
 
         if (!name && name.trim() === "") {
-            setNameError("Wrong username!");
+            setNameError(t('loginform.error.errorusername'));
             result = false;
         }
 
         if (!password && password.trim() === "") {
-            setPasswordError("Wrong password!");
+            setPasswordError(t('loginform.error.errorpassword'));
             result = false;
         }
 
@@ -53,7 +53,7 @@ const UserLoginForm: React.FC = () => {
         if (response.ok) {
             setStatusMessages([
                 {
-                    message: `Login successful. Redirecting to homepage...`,
+                    message: t('loginform.success'),
                     type: "success",
                 },
             ]);
@@ -73,7 +73,7 @@ const UserLoginForm: React.FC = () => {
     return (
         <>
             <form style={{ height: '420px' }} className=" w-1/3 m-auto mt-4 flex flex-col items-center border border-black bg-forms-grey rounded-lg" onSubmit={handleSubmit}>
-                <h1 className="font-semibold text-4xl mt-10 mb-8">Login</h1>
+                <h1 className="font-semibold text-4xl mt-10 mb-8">{t('loginform.title')}</h1>
                 {statusMessages && (
                     <div className="row">
                         <ul className="list-none mb-3 mx-auto ">
@@ -94,7 +94,7 @@ const UserLoginForm: React.FC = () => {
                 <div>
                     <div className="text-white mt-2 mb-2">
                         <label htmlFor="nameInput" className="text-xl mr-52 mb-2">
-                            Username
+                            {t('loginform.username')}
                         </label>
                     </div>
                     <div className="block mb-2 text-sm font-medium">
@@ -114,7 +114,7 @@ const UserLoginForm: React.FC = () => {
                             htmlFor="passwordInput"
                             className="text-xl mr-52 mb-2"
                         >
-                            Password
+                            {t('loginform.password')}
                         </label>
                     </div>
                     <div className="block mb-2 text-sm font-medium">
@@ -135,7 +135,7 @@ const UserLoginForm: React.FC = () => {
                         className="bg-green-button-home text-white font-semibold py-2 px-8 rounded-lg bg-hover-button-home"
                         type="submit"
                     >
-                        Login
+                        {t('loginform.loginbutton')}
                     </button>
                 </div>
             </form>

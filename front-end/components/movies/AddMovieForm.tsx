@@ -2,7 +2,7 @@
 import { User, StatusMessage } from "@/types";
 import classNames from "classnames";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "next-i18next";
 
 const AddMovieForm: React.FC = () => {
@@ -31,15 +31,15 @@ const AddMovieForm: React.FC = () => {
         const messages: StatusMessage[] = [];
 
         if (!moviename) {
-            setMovieNameError("Fill in the movie name!");
+            setMovieNameError(t('addmovie.error.errormoviename'));
             result = false;
         }
         if (!director) {
-            setDirectorError("Fill in the director!");
+            setDirectorError(t('addmovie.error.errordirector'));
             result = false;
         }
         if (!releaseyear) {
-            setReleaseYearError("Fill in the release year of the movie!");
+            setReleaseYearError(t('addmovie.error.errorreleaseyear'));
             result = false;
         }
         return result;
@@ -61,7 +61,7 @@ const AddMovieForm: React.FC = () => {
         if (response.ok) {
             setStatusMessages([
                 {
-                    message: `Movie successfully add. Redirecting to overview...`,
+                    message: t('addmovie.success'),
                     type: "success",
                 },
             ]);
@@ -81,11 +81,11 @@ const AddMovieForm: React.FC = () => {
             <form style={{height: 'auto'}}
                   className=" w-1/3 mt-4 pb-7 flex flex-col items-center bg-forms-grey rounded-lg"
                   onSubmit={handleSubmit}>
-                <h1 className="font-semibold text-4xl mt-10 mb-8">Add Movie</h1>
+                <h1 className="font-semibold text-4xl mt-10 mb-8">{t('addmovie.title')}</h1>
                 <div>
                     <div className="text-white mt-2 mb-2">
                         <label htmlFor="movienameInput" className="text-xl mb-2">
-                            Movie Name
+                            {t('addmovie.moviename')}
                         </label>
                     </div>
                     <div className="block mb-2 text-sm font-medium">
@@ -103,7 +103,7 @@ const AddMovieForm: React.FC = () => {
                 <div>
                     <div className="text-white mt-2 mb-2">
                         <label htmlFor="directorInput" className="text-xl mb-2">
-                            Director
+                            {t('addmovie.director')}
                         </label>
                     </div>
                     <div className="block mb-2 text-sm font-medium">
@@ -120,7 +120,7 @@ const AddMovieForm: React.FC = () => {
                 <div>
                     <div className="text-white mt-2 mb-2">
                         <label htmlFor="releaseyearInput" className="text-xl mb-2">
-                            Release Year
+                            {t('addmovie.releaseyear')}
                         </label>
                     </div>
                     <div className="block mb-2 text-sm font-medium">
@@ -162,7 +162,7 @@ const AddMovieForm: React.FC = () => {
                         className="bg-green-button-home text-white font-semibold py-2 px-8 rounded-lg bg-hover-button-home"
                         type="submit"
                     >
-                        Add Movie
+                        {t('addmovie.buttonaddmovie')}
                     </button>
                 </div>
             </form>

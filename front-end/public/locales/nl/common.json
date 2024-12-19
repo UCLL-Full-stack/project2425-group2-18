@@ -1,0 +1,49 @@
+{
+  "app.title": "ScreenRank",
+  "home": {
+    "welcome": "Welkom bij ScreenRank",
+    "text": "Beoordeel de films die je leuk vindt met ScreenRank! Bewaar elke film die je hebt gezien, beoordeel ze en stel je persoonlijke filmcollectie samen. Sorteer je favorieten eenvoudig op genre en beoordeling, herbeleef de magie van je toppers of vermijd de films die tegenvielen. Begin vandaag nog met het bouwen van jouw ultieme filmbibliotheek!",
+    "startbutton": "Laten we beginnen!"
+  },
+  "header": {
+    "welcome": "Welcome",
+    "nav": {
+      "home": "Start",
+      "login": "Login",
+      "logout": "Loguit",
+      "overview": "Overzicht"
+    }
+  },
+  "loginform": {
+    "title": "Login",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "loginbutton": "Login",
+    "success": "Inloggen geslaagd. Doorsturen naar de startpagina...",
+    "error": {
+      "errorusername": "Verkeerde gebruikersnaam!",
+      "errorpassword": "Verkeerd wachtwoord!"
+    }
+  },
+  "movieoverview": {
+    "title": "Film Overzicht",
+    "nomovies": "Nog geen films!",
+    "moviecard": {
+      "director": "Regisseur: ",
+      "releaseyear": "Uitgiftejaar: "
+    }
+  },
+  "addmovie": {
+    "title": "Film Toevoegen",
+    "moviename": "Filmtitel",
+    "director": "Regisseur",
+    "releaseyear":"Uitgiftejaar",
+    "buttonaddmovie": "Film Toevoegen",
+    "success": "Film succesvol toegevoegd. Doorsturen naar de startpagina...",
+    "error": {
+      "errormoviename": "Vul de filmtitel in!",
+      "errordirector": "Vul de regisseur in!",
+      "errorreleaseyear": "Vul het uitgiftejaar in!"
+    }
+  }
+}
