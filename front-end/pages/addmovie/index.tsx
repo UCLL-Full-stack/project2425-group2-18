@@ -2,12 +2,16 @@ import Head from "next/head";
 import Header from "@/components/header";
 import AddMovieForm from "@/components/movies/AddMovieForm";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
 const AddMovie: React.FC = () => {
+
+    const { t } = useTranslation();
+
     return (
         <>
             <Head>
-                <title>Add Movie</title>
+                <title>{t('addmovie.title')}</title>
             </Head>
             <Header />
             <main>
