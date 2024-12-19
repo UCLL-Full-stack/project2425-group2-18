@@ -1,117 +1,111 @@
-import { Profile } from "./profile";
-import { Role } from "../types";
-export class User{
+import { User as UserPrisma } from '@prisma/client';
+import { Role } from '../types';
+
+export class User {
     private id?: number;
     private username: string;
+    private firstName: string;
+    private lastName: string;
+    private email: string;
     private password: string;
-    private profile: Profile;
     private role: Role;
 
-    // constructor(username: string, password: string, profile: Profile, role: Role){
-    //     this.username = username;
-    //     this.password = password;
-    //     this.profile = profile;
-    //     this.role =role;
-    // }
-
     constructor(user: {
-        id?:number;
+        id?: number;
         username: string;
+        firstName: string;
+        lastName: string;
+        email: string;
         password: string;
-        profile: Profile;
         role: Role;
     }) {
         this.validate(user);
 
         this.id = user.id;
         this.username = user.username;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.email = user.email;
         this.password = user.password;
-        this.profile = user.profile;
         this.role = user.role;
     }
 
-    public getId(): number | undefined{
+    getId(): number | undefined {
         return this.id;
     }
 
-    public setId(id: number): void{
-        this.id = id;
-    }
-
-    public getUsername(): string{
+    getUsername(): string {
         return this.username;
     }
 
-    // TODO: validation for username, username must be unique
-    public setUsername(username: string): void{
-        this.username = username;
+    getFirstName(): string {
+        return this.firstName;
     }
 
-    public getPassword(): string{
+    getLastName(): string {
+        return this.lastName;
+    }
+
+    getEmail(): string {
+        return this.email;
+    }
+
+    getPassword(): string {
         return this.password;
     }
 
-    // TODO: validation for password other than only length
-    public setPassword(password: string): void{
-        
-        if (password.length < 8){
-            throw new Error("Password must be at least 8 characters long");
-        }
-        else{
-            this.password = password;
-        }
-    }
-
-    public getProfile(): Profile{
-        return this.profile;
-    }
-
-    public setProfile(profile: Profile): void{
-        this.profile = profile;
-    }
-
-    public getRole(): Role{
+    getRole(): Role {
         return this.role;
     }
 
-    public setRole(role: Role): void{
-        this.role = role;
-    }
-
     validate(user: {
-        id?: number;
         username: string;
+        firstName: string;
+        lastName: string;
+        email: string;
         password: string;
-        profile: Profile;
         role: Role;
-    }): void{
-        if (user.username.trim() === ""){
-            throw new Error("Username cannot be empty");
+    }) {
+        if (!user.username?.trim()) {
+            throw new Error('Username is required');
         }
-        if (user.password.trim() === ""){
-            throw new Error("Password cannot be empty");
+        if (!user.firstName?.trim()) {
+            throw new Error('First name is required');
         }
-        if (user.password.length < 8){
-            throw new Error("Password must be at least 8 characters long");
+        if (!user.lastName?.trim()) {
+            throw new Error('Last name is required');
+        }
+        if (!user.email?.trim()) {
+            throw new Error('Email is required');
+        }
+        if (!user.password?.trim()) {
+            throw new Error('Password is required');
+        }
+        if (!user.role) {
+            throw new Error('Role is required');
         }
     }
 
-    equals(user: User): boolean{
+    equals(user: User): boolean {
         return (
             this.username === user.getUsername() &&
+            this.firstName === user.getFirstName() &&
+            this.lastName === user.getLastName() &&
+            this.email === user.getEmail() &&
             this.password === user.getPassword() &&
-            this.profile.equals(user.getProfile()) &&
             this.role === user.getRole()
         );
     }
 
-    static from({id, username, password, profile, role}: UserPrisma){
+    static from({ id, username, firstName, lastName, email, password, role }: UserPrisma) {
         return new User({
-            id, 
-            username, 
-            password, 
-            profile: profile as Profile, 
-            role: role as Role
+            id,
+            username,
+            firstName,
+            lastName,
+            email,
+            password,
+            role: role as Role,
         });
     }
 }
