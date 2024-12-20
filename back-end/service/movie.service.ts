@@ -35,11 +35,6 @@ const createMovie = async ({
                                genre,
                                userId,
                            }: MovieInput): Promise<Movie> => {
-    const existingMovie = await movieDb.getMovieByName({ name });
-
-    if (existingMovie) {
-        throw new Error(`Movie with name ${name} is already registered.`);
-    }
 
     const movie = new Movie({ name, director, releaseYear, genre, userId });
 
