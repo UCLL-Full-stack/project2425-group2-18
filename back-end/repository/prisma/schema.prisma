@@ -20,7 +20,7 @@ model User {
 
 model Movie {
   id          Int    @id @default(autoincrement())
-  name        String @unique
+  name        String
   director    String
   releaseYear Int
   genre       String

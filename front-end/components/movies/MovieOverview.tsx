@@ -7,24 +7,24 @@ import UserService from "@/services/UserService";
 
 const MovieOverview: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [username, setUsername] = useState<string | null>(null);
+    const [userId, setUserId] = useState<number | null>(null);
     const router = useRouter();
     const { t } = useTranslation();
 
     useEffect(() => {
-        const fetchUsername = () => {
-            const username = UserService.getLoggedInUsername();
-            setUsername(username);
+        const fetchId = () => {
+            const userId = UserService.getLoggedInUserId();
+            setUserId(userId);
         };
 
-        fetchUsername();
+        fetchId();
     }, []);
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                if (username) {
-                    const movies = await MovieService.getMoviesByUsername(username);
+                if (userId) {
+                    const movies = await MovieService.getMoviesByUserId(userId);
                     setMovies(movies);
                 }
             } catch (error) {
@@ -33,11 +33,7 @@ const MovieOverview: React.FC = () => {
         };
 
         fetchMovies();
-    }, [username]);
-
-    if (username === null) {
-        return <p>Loading...</p>;
-    }
+    }, [userId]);
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">

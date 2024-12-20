@@ -18,13 +18,13 @@
  *           description: JWT access token.
  *         username:
  *           type: string
- *           description: User name.
+ *           description: Username.
  *     AuthenticationRequest:
  *       type: object
  *       properties:
  *         username:
  *           type: string
- *           description: User name.
+ *           description: Username.
  *         password:
  *           type: string
  *           description: User password.
@@ -36,16 +36,16 @@
  *           format: int64
  *         username:
  *           type: string
- *           description: User name.
+ *           description: Username.
  *         password:
  *           type: string
  *           description: User password.
  *         firstName:
  *           type: string
- *           description: First name.
+ *           description: Firstname.
  *         lastName:
  *           type: string
- *           description: Last name.
+ *           description: Lastname.
  *         email:
  *           type: string
  *           description: E-mail.
@@ -56,16 +56,16 @@
  *       properties:
  *         username:
  *           type: string
- *           description: User name.
+ *           description: Username.
  *         password:
  *           type: string
  *           description: User password.
  *         firstName:
  *           type: string
- *           description: First name.
+ *           description: Firstname.
  *         lastName:
  *           type: string
- *           description: Last name.
+ *           description: Lastname.
  *         email:
  *           type: string
  *           description: E-mail.

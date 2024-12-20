@@ -6,7 +6,7 @@
     "startbutton": "Let's get started!"
   },
   "header": {
-    "welcome": "Welcome",
+    "hello": "Hello",
     "nav": {
       "home": "Home",
       "login": "Login",

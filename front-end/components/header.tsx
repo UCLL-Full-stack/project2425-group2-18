@@ -5,13 +5,18 @@ import { useTranslation } from "next-i18next";
 
 const Header: React.FC = () => {
   const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
+  const [loggedInUsername, setLoggedInUsername] = useState<string | null>(null);
 
   const {t} = useTranslation();
 
-  useEffect(() => {
-    const user = sessionStorage.getItem("loggedInUser");
-    setLoggedInUser(user);
-  }, []);
+    useEffect(() => {
+        const user = sessionStorage.getItem("loggedInUser");
+        if (user) {
+            const parsedUser = JSON.parse(user);
+            setLoggedInUser(parsedUser);
+            setLoggedInUsername(parsedUser.username);
+        }
+    }, []);
 
   const handleLogOut = () => {
     sessionStorage.removeItem("loggedInUser");
@@ -62,13 +67,11 @@ const Header: React.FC = () => {
                     </Link>
                 </>
             )}
-            {/*
             {loggedInUser && (
                 <div className="text-white ms-5 mt-2 md:mt-0 pt-1 md:pt-0 grow">
-                    {t('header.welcome')}, {loggedInUser}!
+                    {t('header.hello')}, {loggedInUsername}!
                 </div>
             )}
-            */}
         </nav>
           </div>
           <div className="ml-auto mt-6 mr-24">

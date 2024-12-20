@@ -1,12 +1,12 @@
 // services/MovieService.ts
 import { Movie } from "@/types";
 
-const getMoviesByUsername = async (username: string): Promise<Movie[]> => {
+const getMoviesByUserId = async (userId: number): Promise<Movie[]> => {
     try {
         const user = JSON.parse(sessionStorage.getItem("loggedInUser") || "{}");
         const token = user.token; // Retrieve the token from the logged-in user
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies/user/username/${username}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/movies/user/${userId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const addMovie = async (movie: Movie): Promise<Response> => {
 };
 
 const MovieService = {
-    getMoviesByUsername,
+    getMoviesByUserId,
     addMovie
 };
 
