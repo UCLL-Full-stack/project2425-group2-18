@@ -12,12 +12,12 @@ const getMovieById = async (id: number): Promise<Movie | null> => {
     return movie;
 };
 
-const getMovieByName = async (name: string): Promise<Movie | null> => {
-    const movie = await movieDb.getMovieByName({ name });
-    if (!movie) {
-        throw new Error(`Movie with name: ${name} does not exist.`);
+const getMoviesByUsername = async (username: string): Promise<Movie[]> => {
+    const movies = await movieDb.getMoviesByUsername({ username });
+    if (!movies || movies.length === 0) {
+        throw new Error(`No movies found for user with username: ${username}.`);
     }
-    return movie;
+    return movies;
 };
 
 const getMoviesByUserId = async (userId: number): Promise<Movie[]> => {
@@ -67,9 +67,9 @@ const updateMovie = async (id: number, movieInput: Partial<MovieInput>): Promise
 
 export default {
     getAllMovies,
+    getMoviesByUsername,
     getMoviesByUserId,
     getMovieById,
-    getMovieByName,
     createMovie,
     //updateMovie,
 };

@@ -1,24 +1,34 @@
-// import Movie from "@/types";
-
+import React, { useEffect, useState } from "react";
+import { Movie } from "@/types";
 import { useRouter } from "next/router";
-import {useTranslation} from "next-i18next";
+import { useTranslation } from "next-i18next";
+import MovieService from "@/services/MovieService";
+import UserService from "@/services/UserService";
 
-
-interface Movie {
-    id: number;
-    name: string;
-    director: string;
-    releaseYear: number;
-}
-
-interface MovieProps {
-    movies: Movie[];
-}
-
-const MovieOverview: React.FC<MovieProps> = ({ movies }) => {
+const MovieOverview: React.FC = () => {
+    const [movies, setMovies] = useState<Movie[]>([]);
     const router = useRouter();
+    const { t } = useTranslation();
+    const username = UserService.getLoggedInUsername();
 
-    const {t} = useTranslation();
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                if (username) {
+                    const movies = await MovieService.getMoviesByUsername(username);
+                    setMovies(movies);
+                }
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        };
+
+        fetchMovies();
+    }, [username]);
+
+    if (!username) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
@@ -30,6 +40,7 @@ const MovieOverview: React.FC<MovieProps> = ({ movies }) => {
                         <h2 className="color-title-movie-card text-xl font-bold mb-2">{movie.name}</h2>
                         <p className="text-white">{t('movieoverview.moviecard.director')} {movie.director}</p>
                         <p className="text-white">{t('movieoverview.moviecard.releaseyear')} {movie.releaseYear}</p>
+                        <p className="text-white">{t('movieoverview.moviecard.genre')} {movie.genre}</p>
                     </div>
                 ))
             )}

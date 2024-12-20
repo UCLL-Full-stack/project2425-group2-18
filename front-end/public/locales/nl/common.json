@@ -30,7 +30,8 @@
     "nomovies": "Nog geen films!",
     "moviecard": {
       "director": "Regisseur: ",
-      "releaseyear": "Uitgiftejaar: "
+      "releaseyear": "Uitgiftejaar: ",
+      "genre": "Genre:"
     }
   },
   "addmovie": {

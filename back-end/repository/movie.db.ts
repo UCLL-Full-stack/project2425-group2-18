@@ -24,6 +24,18 @@ const getMovieById = async ({ id }: { id: number }): Promise<Movie | null> => {
     }
 };
 
+const getMoviesByUsername = async ({ username }: { username: string }): Promise<Movie[]> => {
+    try {
+        const moviesPrisma = await database.movie.findMany({
+            where: { user: { username } },
+        });
+        return moviesPrisma.map((moviePrisma) => Movie.from(moviePrisma));
+    } catch (error) {
+        console.error(error);
+        throw new Error('Database error. See server log for details.');
+    }
+};
+
 const getMoviesByUserId = async ({ userId }: { userId: number }): Promise<Movie[]> => {
     try {
         const moviesPrisma = await database.movie.findMany({
@@ -91,6 +103,7 @@ const updateMovie = async (id: number, movie: Partial<Movie>): Promise<Movie | n
 export default {
     getAllMovies,
     createMovie,
+    getMoviesByUsername,
     getMoviesByUserId,
     getMovieById,
     getMovieByName,

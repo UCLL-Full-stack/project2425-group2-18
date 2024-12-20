@@ -60,7 +60,7 @@ const UserLoginForm: React.FC = () => {
 
             const user = await response.json();
 
-            localStorage.setItem("loggedInUser", JSON.stringify(user));
+            sessionStorage.setItem("loggedInUser", JSON.stringify(user));
 
             setTimeout(() => {
                 router.push("/");

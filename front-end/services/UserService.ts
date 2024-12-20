@@ -10,8 +10,14 @@ const loginUser = (user: User) => {
     });
 };
 
+const getLoggedInUsername = (): string | null => {
+    const user = sessionStorage.getItem("loggedInUser");
+    return user ? JSON.parse(user).username : null;
+};
+
 const UserService = {
     loginUser,
+    getLoggedInUsername,
 };
 
 export default UserService;

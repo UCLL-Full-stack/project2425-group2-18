@@ -30,7 +30,8 @@
     "nomovies": "No movies yet!",
     "moviecard": {
       "director": "Director: ",
-      "releaseyear": "Release Year:"
+      "releaseyear": "Release Year:",
+      "genre": "Genre:"
     }
   },
   "addmovie": {

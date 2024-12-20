@@ -111,7 +111,7 @@ userRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
  * @swagger
  * /users/login:
  *   post:
- *      summary: Login using username/password. Returns an object with JWT token and user name when succesful.
+ *      summary: Login using username/password. Returns an object with JWT token and username when successful.
  *      requestBody:
  *        required: true
  *        content:

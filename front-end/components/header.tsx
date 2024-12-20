@@ -9,12 +9,12 @@ const Header: React.FC = () => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    const user = localStorage.getItem("loggedInUser");
+    const user = sessionStorage.getItem("loggedInUser");
     setLoggedInUser(user);
   }, []);
 
   const handleLogOut = () => {
-    localStorage.removeItem("loggedInUser");
+    sessionStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
   }
 
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             ) : (
                 <>
                     <a
-                        href="#"
+                        href="/"
                         onClick={handleLogOut}
                         className="relative px-4 text-2xl font-semibold after:content-[''] after:bg-white after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-1 hover:after:w-11/12 after:transition-all after:duration-300"
                     >

@@ -147,6 +147,44 @@ movieRouter.get('/', async (req: Request, res: Response, next: NextFunction) => 
 
 /**
  * @swagger
+ * /movies/user/username/{username}:
+ *   get:
+ *     summary: Get movies by username
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: username
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The username
+ *     responses:
+ *       200:
+ *         description: A list of movies.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Movie'
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: No movies found for the user
+ */
+movieRouter.get('/user/username/:username', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const username = req.params.username;
+        const movies = await movieService.getMoviesByUsername(username);
+        res.status(200).json(movies);
+    } catch (error) {
+        next(error);
+    }
+});
+
+/**
+ * @swagger
  * /movies/user/{userId}:
  *   get:
  *     summary: Get movies by user ID
