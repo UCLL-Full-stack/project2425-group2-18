@@ -8,11 +8,22 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  username  String @unique
+  id        Int     @id @default(autoincrement())
+  username  String  @unique
   firstName String
   lastName  String
-  email     String @unique
+  email     String  @unique
   password  String
   role      String
+  movies    Movie[] @relation("UserMovies")
+}
+
+model Movie {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  director    String
+  releaseYear Int
+  genre       String
+  userId      Int
+  user        User   @relation(fields: [userId], references: [id], name: "UserMovies")
 }

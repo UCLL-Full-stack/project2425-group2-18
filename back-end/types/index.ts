@@ -10,15 +10,24 @@ type UserInput = {
     role: Role;
 };
 
+type MovieInput = {
+    id?: number;
+    name: string;
+    director: string;
+    releaseYear: number;
+    genre: string;
+    userId: number;
+};
+
 type AuthenticationResponse = {
     token: string;
     username: string;
-    fullname: string;
     role: string;
 };
 
 export {
     Role,
     UserInput,
+    MovieInput,
     AuthenticationResponse
 }

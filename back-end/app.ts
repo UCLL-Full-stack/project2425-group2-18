@@ -7,6 +7,7 @@ import swaggerUi from 'swagger-ui-express';
 import { expressjwt } from 'express-jwt';
 import { userRouter } from './controller/user.routes';
 import helmet from 'helmet';
+import {movieRouter} from "./controller/movie.routes";
 
 const app = express();
 app.use(helmet());
@@ -35,6 +36,7 @@ app.use(
     })
 );
 app.use('/users', userRouter);
+app.use('/movies', movieRouter);
 
 app.get('/status', (req, res) => {
     res.json({ message: 'Courses API is running...' });

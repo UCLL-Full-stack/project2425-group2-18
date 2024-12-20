@@ -19,9 +19,6 @@
  *            username:
  *              type: string
  *              description: User name.
- *            fullname:
- *             type: string
- *             description: Full name.
  *      AuthenticationRequest:
  *          type: object
  *          properties:

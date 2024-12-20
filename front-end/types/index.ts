@@ -1,7 +1,6 @@
 export type User = {
     firstName?: string;
     lastName?: string;
-    fullname?: string;
     email?: string;
     username?: string;
     password?: string;
@@ -11,6 +10,15 @@ export type User = {
 export type StatusMessage = {
     message: string;
     type: "error" | "success";
+};
+
+export type Movie = {
+    id?: number;
+    name: string;
+    director: string;
+    releaseYear: number;
+    genre: string;
+    userId: number;
 };
 
 
