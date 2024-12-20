@@ -15,11 +15,11 @@ export type StatusMessage = {
 
 export type Movie = {
     id?: number;
-    name: string;
-    director: string;
-    releaseYear: number;
-    genre: string;
-    userId: number;
+    name?: string;
+    director?: string;
+    releaseYear?: number;
+    genre?: string;
+    userId?: number;
 };
 
 

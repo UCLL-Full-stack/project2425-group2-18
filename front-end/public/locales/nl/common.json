@@ -39,12 +39,14 @@
     "moviename": "Filmtitel",
     "director": "Regisseur",
     "releaseyear":"Uitgiftejaar",
+    "genre": "Genre",
     "buttonaddmovie": "Film Toevoegen",
     "success": "Film succesvol toegevoegd. Doorsturen naar de startpagina...",
     "error": {
       "errormoviename": "Vul de filmtitel in!",
       "errordirector": "Vul de regisseur in!",
-      "errorreleaseyear": "Vul het uitgiftejaar in!"
+      "errorreleaseyear": "Vul het uitgiftejaar in!",
+      "errorgenre": "Vul het genre in!"
     }
   }
 }

@@ -7,9 +7,18 @@ import UserService from "@/services/UserService";
 
 const MovieOverview: React.FC = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
+    const [username, setUsername] = useState<string | null>(null);
     const router = useRouter();
     const { t } = useTranslation();
-    const username = UserService.getLoggedInUsername();
+
+    useEffect(() => {
+        const fetchUsername = () => {
+            const username = UserService.getLoggedInUsername();
+            setUsername(username);
+        };
+
+        fetchUsername();
+    }, []);
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -26,7 +35,7 @@ const MovieOverview: React.FC = () => {
         fetchMovies();
     }, [username]);
 
-    if (!username) {
+    if (username === null) {
         return <p>Loading...</p>;
     }
 

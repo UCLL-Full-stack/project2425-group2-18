@@ -11,13 +11,25 @@ const loginUser = (user: User) => {
 };
 
 const getLoggedInUsername = (): string | null => {
-    const user = sessionStorage.getItem("loggedInUser");
-    return user ? JSON.parse(user).username : null;
+    if (typeof window !== "undefined") {
+        const user = sessionStorage.getItem("loggedInUser");
+        return user ? JSON.parse(user).username : null;
+    }
+    return null;
+};
+
+const getLoggedInUserId = (): number | null => {
+    if (typeof window !== "undefined") {
+        const user = sessionStorage.getItem("loggedInUser");
+        return user ? JSON.parse(user).id : null;
+    }
+    return null;
 };
 
 const UserService = {
     loginUser,
     getLoggedInUsername,
+    getLoggedInUserId
 };
 
 export default UserService;

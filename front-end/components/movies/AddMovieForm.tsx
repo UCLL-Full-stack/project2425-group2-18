@@ -4,14 +4,18 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
+import MovieService from "@/services/MovieService";
+import UserService from "@/services/UserService";
 
 const AddMovieForm: React.FC = () => {
     const [moviename, setMovieName] = useState("");
     const [movienameError, setMovieNameError] = useState<string | null>(null);
     const [director, setDirector] = useState("");
     const [directorError, setDirectorError] = useState<string | null>(null);
-    const [releaseyear, setReleaseYear] = useState("");
-    const [releaseyearError, setReleaseYearError] = useState<string | null>(null);
+    const [releaseYear, setReleaseYear] = useState("");
+    const [releaseYearError, setReleaseYearError] = useState<string | null>(null);
+    const [genre, setGenre] = useState("");
+    const [genreError, setGenreError] = useState<string | null>(null);
     //const [image, setImage] = useState("");
     const [statusMessages, setStatusMessages] = useState<StatusMessage[]>([]);
     const router = useRouter();
@@ -22,6 +26,7 @@ const AddMovieForm: React.FC = () => {
         setMovieNameError(null);
         setDirectorError(null);
         setReleaseYearError(null);
+        setGenreError(null);
         setStatusMessages([]);
     }
 
@@ -38,8 +43,12 @@ const AddMovieForm: React.FC = () => {
             setDirectorError(t('addmovie.error.errordirector'));
             result = false;
         }
-        if (!releaseyear) {
+        if (!releaseYear) {
             setReleaseYearError(t('addmovie.error.errorreleaseyear'));
+            result = false;
+        }
+        if (!genre) {
+            setGenreError(t('addmovie.error.errorgenre'));
             result = false;
         }
         return result;
@@ -54,8 +63,13 @@ const AddMovieForm: React.FC = () => {
             return;
         }
 
+        const userId = UserService.getLoggedInUserId();
+        if (!userId) {
+            console.error("User ID is required");
+            return;
+        }
 
-        const movie = {moviename: moviename, director, releaseyear};
+        const movie = { name: moviename, director, releaseYear: Number(releaseYear), genre, userId };
         const response = await MovieService.addMovie(movie);
 
         if (response.ok) {
@@ -72,8 +86,6 @@ const AddMovieForm: React.FC = () => {
                 router.push("/movie");
             }, 2000);
         }
-
-
     };
 
     return (
@@ -127,13 +139,31 @@ const AddMovieForm: React.FC = () => {
                         <input
                             id="releaseyearInput"
                             type="number"
-                            value={releaseyear}
+                            value={releaseYear}
                             onChange={(event) => setReleaseYear(event.target.value)}
                             className="w-full p-2.5 text-black bg-white rounded-lg"
                         />
-                        {releaseyearError && <div className="text-red-600">{releaseyearError}</div>}
+                        {releaseYearError && <div className="text-red-600">{releaseYearError}</div>}
                     </div>
                 </div>
+                <div>
+                    <div className="text-white mt-2 mb-2">
+                        <label htmlFor="genreInput" className="text-xl mb-2">
+                            {t('addmovie.genre')}
+                        </label>
+                    </div>
+                    <div className="block mb-2 text-sm font-medium">
+                        <input
+                            id="genreInput"
+                            type="text"
+                            value={genre}
+                            onChange={(event) => setGenre(event.target.value)}
+                            className="w-full p-2.5 text-black bg-white rounded-lg"
+                        />
+                        {genreError && <div className="text-red-600">{genreError}</div>}
+                    </div>
+                </div>
+
                 {/*
                 <div>
                     <div className="text-white mt-2 mb-2">

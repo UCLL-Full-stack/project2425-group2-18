@@ -20,6 +20,7 @@ type MovieInput = {
 };
 
 type AuthenticationResponse = {
+    id: number;
     token: string;
     username: string;
     role: string;

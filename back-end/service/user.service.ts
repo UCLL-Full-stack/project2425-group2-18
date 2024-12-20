@@ -23,6 +23,7 @@ const authenticate = async ({ username, password }: UserInput): Promise<Authenti
         throw new Error('Incorrect password.');
     }
     return {
+        id: user.getId() ?? 0,
         token: generateJwtToken({ username, role: user.getRole() }),
         username: username,
         role: user.getRole(),

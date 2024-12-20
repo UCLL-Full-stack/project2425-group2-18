@@ -39,12 +39,14 @@
     "moviename": "Movie Name",
     "director": "Director",
     "releaseyear":"Release Year",
+    "genre": "Genre",
     "buttonaddmovie": "Add Movie",
     "success": "Movie successfully add. Redirecting to overview...",
     "error": {
       "errormoviename": "Fill in the movie name!",
       "errordirector": "Fill in the director!",
-      "errorreleaseyear": "Fill in the release year of the movie!"
+      "errorreleaseyear": "Fill in the release year of the movie!",
+      "errorgenre": "Fill in the genre!"
     }
   }
 }
